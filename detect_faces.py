@@ -15,7 +15,7 @@ def detect_faces_from_video(file_path):
     video = Video(file_path)
     detector = FER(mtcnn=True)
     video_data = video.analyze(detector, display=False)
-    output_video_path = f"output/videos/{os.path.basename(file_path).split('.')[0]}_output.mp4" 
+    output_video_path = f"output/{os.path.basename(file_path).split('.')[0]}_output.mp4" 
     df = video.to_pandas(video_data)
 
 def detect_faces_from_image(file_path):
