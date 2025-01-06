@@ -8,7 +8,7 @@ import os
 compliments = {
     "smile": "Your smile lights up the room!",
     "neutral": "Your presence is calm and confident!",
-    "sad": "You’ve got this, keep going!",
+    "sad": "You've got this, keep going!",
     "angry": "Your passion and determination are truly inspiring!"
 }
 def detect_faces_from_video(file_path):
@@ -33,13 +33,12 @@ def detect_faces_from_image(file_path):
     #output image with the emotion detected
     max_emotion_text = f"{top_emotion[0]}: {top_emotion[1]}"
     bounding_box = emotions[0]["box"]
-    emotion = emotions[0]["emotions"]
     color = (255, 0, 0)
 
     cv2.putText(input_image,max_emotion_text,
                 (bounding_box[0], bounding_box[1] + bounding_box[3] + 30),
                 cv2.FONT_HERSHEY_SIMPLEX,0.5,color,1,cv2.LINE_AA,)
-    output_image = f"output/images/{os.path.splitext(file_path)[0]}_output.jpg"
+    output_image = f"output/images/{os.path.basename(file_path).split('.')[0]}_output.jpg"
     cv2.imwrite(output_image, input_image)
     result_image = mpimg.imread(output_image)
     plt.imshow(result_image)
@@ -47,7 +46,7 @@ def detect_faces_from_image(file_path):
     print(compliment)
 
 def file_path():
-    file_path = input("Enter the file path: ")
+    file_path = input("Enter the file path: ").strip()
     _, file_extension = os.path.splitext(file_path)
     
     file_extension = file_extension.lower()
