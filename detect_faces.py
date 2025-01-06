@@ -33,7 +33,6 @@ def detect_faces_from_image(file_path):
     #output image with the emotion detected
     max_emotion_text = f"{top_emotion[0]}: {top_emotion[1]}"
     bounding_box = emotions[0]["box"]
-    print(bounding_box)
     emotion = emotions[0]["emotions"]
     color = (255, 0, 0)
 
